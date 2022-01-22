@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Added for Google Drive
+.tmp.driveupload
+.tmp.drivedownload

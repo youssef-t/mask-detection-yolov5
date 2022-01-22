@@ -1,4 +1,4 @@
-# undefined > mask-detector-v1-yolov5
+# undefined > mask-detector-v2-yolov5
 https://public.roboflow.ai/object-detection/undefined
 
 Provided by undefined

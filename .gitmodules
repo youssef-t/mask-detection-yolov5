@@ -1,0 +1,3 @@
+[submodule "face-mask-dataset-ilc-2021"]
+	path = face-mask-dataset-ilc-2021
+	url = https://github.com/jolignier/face-mask-dataset-ilc-2021

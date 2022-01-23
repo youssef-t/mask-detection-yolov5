@@ -70,7 +70,8 @@ class Annotator:
         check_font()  # download TTF if necessary
 
     # YOLOv5 Annotator for train/val mosaics and jpgs and detect/hub inference annotations
-    def __init__(self, im, line_width=None, font_size=None, font='Arial.ttf', pil=False, example='abc'):
+    def __init__(self, im, line_width=None, font_size=None, font='Arial.ttf', pil=False, example='abc', timestamp=-1.0):
+        self.timestamp = timestamp
         assert im.data.contiguous, 'Image not contiguous. Apply np.ascontiguousarray(im) to Annotator() input images.'
         self.pil = pil or not is_ascii(example) or is_chinese(example)
         if self.pil:  # use PIL
@@ -86,6 +87,7 @@ class Annotator:
         # Add one xyxy box to image with label
         if self.pil or not is_ascii(label):
             self.draw.rectangle(box, width=self.lw, outline=color)  # box
+            self.draw.putText(self.im, "Hello World!!!", (20, 0), cv2.FONT_HERSHEY_SIMPLEX, 2, 255)
             if label:
                 w, h = self.font.getsize(label)  # text width, height
                 outside = box[1] - h >= 0  # label fits outside box
@@ -98,6 +100,9 @@ class Annotator:
         else:  # cv2
             p1, p2 = (int(box[0]), int(box[1])), (int(box[2]), int(box[3]))
             cv2.rectangle(self.im, p1, p2, color, thickness=self.lw, lineType=cv2.LINE_AA)
+            # Display fps
+            if not self.timestamp == -1.0:
+                cv2.putText(self.im, "fps: " + str(round(1 / self.timestamp, 2)), (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
             if label:
                 tf = max(self.lw - 1, 1)  # font thickness
                 w, h = cv2.getTextSize(label, 0, fontScale=self.lw / 3, thickness=tf)[0]  # text width, height

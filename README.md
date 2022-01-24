@@ -28,4 +28,4 @@ python detect.py --img 416 --source CHEMIN_VERS_REPERTOIRE_IMAGES --weights ./we
 Avec Roboflow, on transforme xml en format Yolo. Ensuite, on met les résultats (images et annotations) dans le dossier dans ./test_validation_kaggle.
 
 On définit les données de validations dans custom_data_validation_coco_map.yaml.
-python val.py --img 416 --weights ./weights_after_training/yolov5_n/best.pt --data custom_data_validation_coco_map.yaml 
+python val.py --img 416 --weights ./weights_after_training/yolov5_n/best.pt --data custom_data_validation_coco_map.yaml --task test

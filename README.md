@@ -24,9 +24,8 @@ python detect.py --img 416 --source 0 --weights ./weights_after_training/yolov5_
 
 python detect.py --img 416 --source CHEMIN_VERS_REPERTOIRE_IMAGES --weights ./weights_after_training/yolov5_n/best.pt --save-txt --line-thickness 1
 
-### Validation avec mAP
-On met les données de validation dans ./mAP/input/images-optional/images, Et leurs labels dans ground-truth. 
-Avec Roboflow, on transforme xml en format Yolo. Ensuite on met les résultats dans le dossier ./mAP/input/images-optional/labels.
+### Evaluation avec mAP
+Avec Roboflow, on transforme xml en format Yolo. Ensuite, on met les résultats (images et annotations) dans le dossier dans ./test_validation_kaggle.
 
-On définit dans custom_data_validation_coco_map.yaml  les données de validations
-python val.py --img 416 --weights ./weights_after_training/yolov5_n/best.pt --data custom_data_validation_coco_map.yaml --save-txt
+On définit les données de validations dans custom_data_validation_coco_map.yaml.
+python val.py --img 416 --weights ./weights_after_training/yolov5_n/best.pt --data custom_data_validation_coco_map.yaml 

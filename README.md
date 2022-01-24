@@ -8,6 +8,8 @@
 [![pypi](https://img.shields.io/pypi/pyversions/sysbus.svg)](https://pypi.python.org/pypi/sysbus)
 [![MIT License](https://img.shields.io/github/license/rene-d/sysbus.svg?logoColor=silver&logo=open-source-initiative&label=&color=blue)](https://github.com/rene-d/sysbus/blob/master/LICENSE)
 
+## <a href="https://github.com/ultralytics/yolov5"> YOLOV5 </a>
+
 ## Guide d'utilisation Windows et Linux
 
 ```bash
@@ -26,12 +28,12 @@ $ pip install -r requirements.txt
 
 On définit custom_data.yaml qui contient la configuration du réseau.
 
-Poids initialisés arbitrairement:
+Poids initialisés arbitrairement (yolov5_n):
 ```bash
 $ python train.py --img 416 --batch 16 --epochs 65 --data custom_data.yaml --weights '' --cfg yolov5n.yaml --name yolov5n_results  --cache
 ```
 
-Poids initialisés selon les recommandations de Yolov5
+Poids initialisés selon les recommandations de Yolov5 (yolov5_n):
 ```bash
 $ python train.py --img 416 --batch 16 --epochs 65 --data custom_data.yaml –weights yolov5n.yaml --name yolov5n_results  --cache
 ```
@@ -49,7 +51,7 @@ $ python detect.py --img 416 --source CHEMIN_VERS_REPERTOIRE_IMAGES --weights ./
 ### Evaluation avec mAP
 Avec Roboflow, on transforme xml en format Yolo. Ensuite, on met les résultats (images et annotations) dans le dossier dans ./test_validation_kaggle.
 
-On définit les données de validations dans custom_data_validation_coco_map.yaml :
+On définit les données de validation dans custom_data_validation_coco_map.yaml :
 ```bash
 $ python val.py --img 416 --weights ./weights_after_training/yolov5_n/best.pt --data custom_data_validation_coco_map.yaml --task test
 ```
